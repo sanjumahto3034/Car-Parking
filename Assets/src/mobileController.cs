@@ -14,6 +14,7 @@ public class mobileController : MonoBehaviour
         cc.horizontalFunc(0);
     }
      public void accelrateDown(){
+        Debug.Log("gghjggjygjjhjh");
         cc.horizontalFunc(1);
     }
 
@@ -39,9 +40,17 @@ public class mobileController : MonoBehaviour
         cc.verticleFunc(1);
     }
 
+    public void breakUp(){
+        cc.allWheelBreakApply(0);
+    }
+    public void breakDonw(){
+        cc.allWheelBreakApply(2000);
+
+    }
+
 
      public void restartGame(){
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("gameScene");
     }
 
 

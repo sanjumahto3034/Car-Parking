@@ -28,18 +28,26 @@ public class carControll : MonoBehaviour
     void FixedUpdate(){
         // horizontalFunc(Input.GetAxis("Horizontal"));
         // verticleFunc(Input.GetAxis("Vertical"));
+        
+        // horizontalInput = Input.GetAxis("Vertical");
+        // verticleInput = Input.GetAxis("Horizontal");
+        // Debug.Log("Horizontal Axis -> "+horizontalInput+" : \nVertical Input -> "+verticleInput);
         getWheelCollider();
         allWheelAnimationControll();
     }   
     public void horizontalFunc(float value){
         horizontalInput = value;
+        Debug.Log("Mobile Class Called");
        
     }
     public void verticleFunc(float value){
         verticleInput = value;
-        
+        Debug.Log("Mobile Class Called");
+
     }
     private void getWheelCollider(){
+        // if(breakForce != 0)return;
+
         accelarateVehicle(left_fWheelCollider);
         accelarateVehicle(right_fWheelCollider);
         accelarateVehicle(left_bWheelCollider);
@@ -48,10 +56,16 @@ public class carControll : MonoBehaviour
         stearVehicleAngle(left_fWheelCollider);
         stearVehicleAngle(right_fWheelCollider);
 
-
-
         // breaks
-        breakForce = (Input.GetKey(KeyCode.Space))?2000:0;
+        // breakForce = (Input.GetKey(KeyCode.Space))?2000:0;
+        // applyBreaksOnVehicle(left_fWheelCollider);
+        // applyBreaksOnVehicle(right_fWheelCollider);
+        // applyBreaksOnVehicle(left_bWheelCollider);
+        // applyBreaksOnVehicle(right_bWheelCollider);
+    }
+
+    public void allWheelBreakApply(float _breakForce){
+        breakForce = _breakForce;
         applyBreaksOnVehicle(left_fWheelCollider);
         applyBreaksOnVehicle(right_fWheelCollider);
         applyBreaksOnVehicle(left_bWheelCollider);
@@ -92,91 +106,3 @@ public class carControll : MonoBehaviour
 
 
 }
-[System.Serializable]
-public class WheelColiderClass{
-
-}
-[System.Serializable]
-public class WheelTransformClass{
-    public Transform left_fWheel;
-    public Transform right_fWheel;
-    public Transform left_bWheel;
-    public Transform right_bWheel;
-}
-    /*
-    public float tork = 2000000f;
-    public Vector3 tyreRotation;
-    public List<WheelCollider> wheels;
-    public List<WheelCollider> stearWheel;
-    public List<Transform> stearWheelTransform;
-
-    public float maxTurn = 20;
-
-    void Awake(){
-      
-    }
-
-    void Start(){
-        Application.targetFrameRate = 60;
-    }
-
-    void FixedUpdate(){
-        float accelaration = Input.GetAxis("Vertical");
-        float stearing = Input.GetAxis("Horizontal");
-
-        foreach(WheelCollider whel in wheels){
-            accelrateVehile(accelaration);
-            if(Input.GetKey(KeyCode.W)){
-                whel.GetComponent<Transform>().Rotate(tyreRotation * Time.deltaTime);
-            }
-            else if(Input.GetKey(KeyCode.S)){
-                whel.GetComponent<Transform>().Rotate(-tyreRotation * Time.deltaTime);
-            }
-        }
-        foreach(WheelCollider wheel in stearWheel){
-            stearVehile(stearing);
-            bool isStraight = true;
-             if(Input.GetKey(KeyCode.A)){
-                isStraight = false;
-                // wheel.GetComponent<Transform>().rotation = Quaternion.AngleAxis(-30, Vector3.up);
-            }
-            if(Input.GetKey(KeyCode.D)){
-                isStraight = false;
-                // wheel.GetComponent<Transform>().rotation = Quaternion.AngleAxis(30, Vector3.up);
-            }
-            if(isStraight){
-                // wheel.GetComponent<Transform>().rotation = Quaternion.AngleAxis(0, Vector3.up);
-            }
-        }
-
-    }
-    public void accelrateVehile(float  _value){
-        // Debug.Log("Calling ->"+_value);
-        foreach(WheelCollider wheel in wheels){
-            wheel.motorTorque = tork * Time.deltaTime * _value;
-
-        }
-    }
-
-
-    public void stearVehile(float  _value){
-        foreach(WheelCollider wheel in stearWheel){
-            wheel.steerAngle = maxTurn * _value; 
-            rotateWheels(wheel);
-
-        }
-    }
-
-    public void rotateWheels(WheelCollider _wheel){
-        foreach(Transform t_wheel in stearWheelTransform){
-            Vector3 pos;
-            Quaternion rot;
-            _wheel.GetWorldPose(out pos,out rot);
-            t_wheel.rotation = rot;
-            t_wheel.position = pos;
-        }
-    }
-    
-
-}
-*/
