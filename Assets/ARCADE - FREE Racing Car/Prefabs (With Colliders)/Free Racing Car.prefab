@@ -514,17 +514,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823f95d0f96c9834f8612888d3b30b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tork: 20
-  tyreRotation: {x: 0, y: 0, z: 0}
-  wheels:
-  - {fileID: 2716459193614891142}
-  - {fileID: 4795950753765878369}
-  - {fileID: 3145262460232535540}
-  - {fileID: 1057494946909100755}
-  stearWheel:
-  - {fileID: 2716459193614891142}
-  - {fileID: 4795950753765878369}
-  maxTurn: 20
+  motroTork: 0
+  breakForce: 0
+  maxStearing: 0
+  left_fWheelCollider: {fileID: 0}
+  right_fWheelCollider: {fileID: 0}
+  left_bWheelCollider: {fileID: 0}
+  right_bWheelCollider: {fileID: 0}
+  left_fWheelTransform: {fileID: 0}
+  right_fWheelTransform: {fileID: 0}
+  left_bWheelTransform: {fileID: 0}
+  right_bWheelTransform: {fileID: 0}
 --- !u!1 &3962000127133956386
 GameObject:
   m_ObjectHideFlags: 0
