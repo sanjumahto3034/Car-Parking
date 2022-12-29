@@ -10,42 +10,18 @@ public class mobileController : MonoBehaviour
     void Start(){
         Application.targetFrameRate = 60;
     }
-    public void accelrateUp(){
-        cc.horizontalFunc(0);
-    }
-     public void accelrateDown(){
-        Debug.Log("gghjggjygjjhjh");
-        cc.horizontalFunc(1);
+
+    public void AccelarateVehilce(float _value){
+        cc.horizontalFunc(_value);
+        Debug.Log(_value);
     }
 
-      public void reverseUp(){
-        cc.horizontalFunc(0);
-    }
-     public void reverseDown(){
-        cc.horizontalFunc(-1);
+    public void stearVehicle(float _value){
+        cc.verticleFunc(_value);
     }
 
-
-      public void stearLeftUp(){
-        cc.verticleFunc(0);
-    }
-     public void stearLeftDown(){
-        cc.verticleFunc(-1);
-    }
-
-      public void stearRightUp(){
-        cc.verticleFunc(0);
-    }
-     public void stearRightDown(){
-        cc.verticleFunc(1);
-    }
-
-    public void breakUp(){
-        cc.allWheelBreakApply(0);
-    }
-    public void breakDonw(){
-        cc.allWheelBreakApply(2000);
-
+      public void applyBreaks(float _value){
+        cc.allWheelBreakApply(_value);
     }
 
 

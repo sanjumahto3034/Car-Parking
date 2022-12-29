@@ -34,27 +34,30 @@ public class carControll : MonoBehaviour
         // Debug.Log("Horizontal Axis -> "+horizontalInput+" : \nVertical Input -> "+verticleInput);
         getWheelCollider();
         allWheelAnimationControll();
+        float carSpeed = (2*Mathf.PI*(left_fWheelCollider.radius*100)*left_fWheelCollider.rpm/100)*60/1000;
+        Debug.Log(carSpeed);
     }   
+  
     public void horizontalFunc(float value){
         horizontalInput = value;
-        Debug.Log("Mobile Class Called");
+        // Debug.Log("Mobile Class Called");
        
     }
     public void verticleFunc(float value){
         verticleInput = value;
-        Debug.Log("Mobile Class Called");
+        // Debug.Log("Mobile Class Called");
 
     }
     private void getWheelCollider(){
         // if(breakForce != 0)return;
 
-        accelarateVehicle(left_fWheelCollider);
-        accelarateVehicle(right_fWheelCollider);
-        accelarateVehicle(left_bWheelCollider);
-        accelarateVehicle(right_bWheelCollider);
+        accelarateVehicle(left_fWheelCollider,horizontalInput);
+        accelarateVehicle(right_fWheelCollider,horizontalInput);
+        accelarateVehicle(left_bWheelCollider,horizontalInput);
+        accelarateVehicle(right_bWheelCollider,horizontalInput);
         
-        stearVehicleAngle(left_fWheelCollider);
-        stearVehicleAngle(right_fWheelCollider);
+        stearVehicleAngle(left_fWheelCollider,verticleInput);
+        stearVehicleAngle(right_fWheelCollider,verticleInput);
 
         // breaks
         // breakForce = (Input.GetKey(KeyCode.Space))?2000:0;
@@ -76,11 +79,12 @@ public class carControll : MonoBehaviour
 
 
 
-    private void accelarateVehicle(WheelCollider _wheel){
-        _wheel.motorTorque = motroTork * horizontalInput;
+    private void accelarateVehicle(WheelCollider _wheel,float v){
+        _wheel.motorTorque = motroTork * v;
+        // Debug.Log(_wheel.motorTorque);
     }
-    private void stearVehicleAngle(WheelCollider _wheel){
-        _wheel.steerAngle = maxStearing * verticleInput;
+    private void stearVehicleAngle(WheelCollider _wheel,float v){
+        _wheel.steerAngle = maxStearing * v;
     }
     private void applyBreaksOnVehicle(WheelCollider _wheel){
         _wheel.brakeTorque = breakForce;
